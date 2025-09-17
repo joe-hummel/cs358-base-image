@@ -89,7 +89,7 @@ If you get an error message along the lines of "script is not digitally
 signed. You cannot run this script on the current system", then run 
 as follows:
 
-  powershell.exe -executionpolicy bypass .\_setup\windows.ps1
+  powershell.exe -executionpolicy bypass .\setup\windows.ps1
 
 Now build the Docker image by executing this command (you only need to do 
 this once):
@@ -139,6 +139,11 @@ app access to the local file system as follows:
       4. Scroll down to find "Full Disk Access"
       5. Add the Terminal app if need be (with + at the bottom)
       6. Slide the UI control to the right to grant Terminal access
+
+  - A rare Windows error along the lines of "request returned 500 internal server error for API route and version http://%F%F..."
+      - https://forums.docker.com/t/error-request-returned-internal-server-error-for-api-route-and-version/140375
+      - could be as simple as rebooting machine (to restart Docker engine) and trying again
+      - Another solution: got it working after disabling the Virtual Machine Platform windows feature, restarting computer, re-enabling the feature, restarting, and then installing WSL2
 
   - Other errors? Exit the Terminal/Powershell app and try again. Also, make
 sure the folder is NOT hosted in a cloud-syncing service such as DropBox,
